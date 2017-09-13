@@ -6,9 +6,20 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
 </head>
 <body data-ng-app="myRecipes">
+<div class="container">
+    <h1 class="page-header">My recipes</h1>
+    <div data-ui-view></div>
+</div>
 
+<script src="bower_components/lodash/lodash.js"></script>
 <script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+
 <script src="app.js"></script>
+<script src="app.config.js"></script>
+<script src="app.route.js"></script>
+<script src="services/recipe.service.js"></script>
+<script src="modules/recipeList/recipeList.controller.js"></script>
 
 </body>
 </html>

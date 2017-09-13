@@ -1,0 +1,25 @@
+<div class="col-md-6">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="New recipe">
+                <span class="input-group-btn">
+                    <button class="btn btn-success" type="button">+</button>
+                </span>
+            </div>
+        </div>
+        <!--//TODO table-->
+        <div class="panel-body">
+            <ul class="list-group">
+                <li data-ng-repeat="recipe in recipeListCtrl.recipes" class="list-group-item">
+                    <span class="badge" data-ng-click="recipeListCtrl.removeRecipe(recipe.id)">-</span>
+                    {{recipe.name}}
+                </li>
+                <li data-ng-show="recipeListCtrl.isRecipeListEmpty" class="list-group-item">Recipe list is empty</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="col-md-6">
+
+</div>

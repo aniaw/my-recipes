@@ -28,6 +28,7 @@
     "undef": true,
     "unused": true,
     "globals": {
-        "angular": true
+        "angular": true,
+        "_":true
     }
 }

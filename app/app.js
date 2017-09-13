@@ -1,5 +1,5 @@
 (function ()
 {
     'use strict';
-    angular.module('myRecipes', []);
+    angular.module('myRecipes', ['ui.router']);
 })();
