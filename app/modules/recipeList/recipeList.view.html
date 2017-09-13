@@ -1,4 +1,4 @@
-<div class="col-md-6">
+<div class="col-md-4">
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="input-group">
@@ -13,13 +13,15 @@
             <ul class="list-group">
                 <li data-ng-repeat="recipe in recipeListCtrl.recipes" class="list-group-item">
                     <span class="badge" data-ng-click="recipeListCtrl.removeRecipe(recipe.id)">-</span>
-                    {{recipe.name}}
+                    <a data-ui-sref="recipe.detail({id:recipe.id})">{{recipe.name}}</a>
                 </li>
                 <li data-ng-show="recipeListCtrl.isRecipeListEmpty" class="list-group-item">Recipe list is empty</li>
             </ul>
         </div>
     </div>
 </div>
-<div class="col-md-6">
+
+<div class="col-md-8">
+    <div data-ui-view="detail"></div>
 
 </div>
