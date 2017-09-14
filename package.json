@@ -10,6 +10,7 @@
     "jshint": "2.9.4"
   },
   "scripts": {
-    "postinstall": "bower install"
+    "postinstall": "bower install",
+    "start":"./node_modules/.bin/gulp serve"
   }
 }
