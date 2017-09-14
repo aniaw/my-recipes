@@ -21,8 +21,9 @@
             });
         };
 
-        service.getIngredientsCount = function (id) {
-            return service.get(id).ingredients.length;
+        service.getIngredientsSum = function (id) {
+            var ingredients = service.get(id).ingredients;
+           return _.sumBy(ingredients, 'amount');
         };
 
         service.update = function (recipe) {
