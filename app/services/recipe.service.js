@@ -1,22 +1,28 @@
 (function () {
     'use strict';
 
+    var id = 3;
+
     function RecipeService() {
         var service = this;
 
         var recipes = [
             {id: 1, name: 'Magic recipe', bigAmount: true, ingredients: [{name: 'milk', amount: 1, unit: 'cup', method: 'cook'}]},
-            {id: 2, name: 'New recipe', bigAmount: true, ingredients: [{name: 'flour', amount: 300, unit: 'pound', method: 'cook'}]}
+            {id: 2, name: 'Amazing recipe', bigAmount: true, ingredients: [{name: 'flour', amount: 300, unit: 'pound', method: 'cook'}]}
         ];
 
         service.query = function () {
             return recipes;
-
         };
+
         service.get = function (id) {
             return _.find(recipes, function (recipe) {
                 return recipe.id === id;
             });
+        };
+
+        service.getIngredientsCount = function (id) {
+            return service.get(id).ingredients.length;
         };
 
         service.update = function (recipe) {
@@ -25,15 +31,17 @@
         };
 
         service.save = function (recipe) {
-            recipes.push(recipe);
+            recipe.id = id++;
+            recipe.ingredients = [];
+            recipes.push(angular.copy(recipe));
+            return recipe.id;
         };
-        service.remove = function (id) {
 
+        service.remove = function (id) {
             _.remove(recipes, function (recipe) {
                 return recipe.id === id;
             });
         };
-
     }
 
     angular.module('myRecipes').service('RecipeService', [RecipeService]);

@@ -1,11 +1,11 @@
 (function () {
     'use strict';
 
-    function RecipeListController(RecipeService) {
+    function RecipeListController($state, RecipeService) {
 
         var ctrl = this;
 
-        ctrl.newRecipe = {};
+        ctrl.newRecipe = {name: 'New recipe'};
 
         ctrl.recipes = RecipeService.query();
 
@@ -15,11 +15,13 @@
         };
 
         ctrl.addRecipe = function () {
-            RecipeService.save(ctrl.newRecipe);
+            var id = RecipeService.save(ctrl.newRecipe);
+            ctrl.isRecipeListEmpty = !ctrl.recipes.length;
+            $state.go('recipe.detail', {id: id});
         };
 
     }
 
-    angular.module('myRecipes').controller('RecipeListController', ['RecipeService', RecipeListController]);
+    angular.module('myRecipes').controller('RecipeListController', ['$state', 'RecipeService', RecipeListController]);
 
 })();

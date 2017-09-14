@@ -9,17 +9,31 @@
         ctrl.recipe = RecipeService.get(recipeId);
 
         ctrl.addNewIngredient = function () {
-            RecipeService.update({id: recipeId, ingredient: ctrl.newIngredient});
+            var ingredientsCount = RecipeService.getIngredientsCount(recipeId);
+
+            if(ingredientsCount < 3 || ((ingredientsCount >= 3) && ctrl.recipe.bigAmount)){
+                RecipeService.update({id: recipeId, ingredient: ctrl.newIngredient});
+            }
+            else {
+                //TODO alert
+                console.error('Too many ingredients');
+            }
+
         };
 
         ctrl.newIngredient = {name: null, amount: null, unit: null, method: null};
+
+        ctrl.ingredientList = [
+            {name: 'potato'},
+            {name: 'milk'},
+            {name: 'chocolate'}
+        ];
 
         ctrl.unitList = [
             {name: 'cup'},
             {name: 'quart'},
             {name: 'gallon'}
         ];
-
 
         ctrl.cookingMethodList = [
             {name: 'cook'},

@@ -1,7 +1,7 @@
 <div class="panel panel-info">
     <div class="panel-heading">
         <span class="badge">{{recipeDetailsCtrl.recipe.id}}</span> {{recipeDetailsCtrl.recipe.name}}
-        <label class="pull-right">Big amount: <input type="checkbox" data-ng-disabled="true" data-ng-model="recipeDetailsCtrl.recipe.bigAmount"/></label>
+        <label class="pull-right">Big amount: <input type="checkbox" data-ng-model="recipeDetailsCtrl.recipe.bigAmount"/></label>
     </div>
     <div class="panel-body">
         <strong>Ingredients:</strong>
@@ -16,23 +16,28 @@
 
         <form class="form-inline" data-ng-submit="recipeDetailsCtrl.addNewIngredient()">
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="New ingredient" data-ng-model="recipeDetailsCtrl.newIngredient.name">
+                <select class="form-control" data-ng-model="recipeDetailsCtrl.newIngredient.name">
+                    <option value="">Ingredient</option>
+                    <option ng-repeat="ingredient in recipeDetailsCtrl.ingredientList" value="{{ingredient.name}}">{{ingredient.name}}</option>
+                </select>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Amount" data-ng-model="recipeDetailsCtrl.newIngredient.amount">
+                <input type="number" class="form-control" placeholder="Amount" data-ng-model="recipeDetailsCtrl.newIngredient.amount">
             </div>
             <div class="form-group">
                 <select class="form-control" data-ng-model="recipeDetailsCtrl.newIngredient.unit">
+                    <option value="">Unit</option>
                     <option ng-repeat="unit in recipeDetailsCtrl.unitList" value="{{unit.name}}">{{unit.name}}</option>
                 </select>
             </div>
             <div class="form-group">
                 <select class="form-control" data-ng-model="recipeDetailsCtrl.newIngredient.method">
+                    <option value="">Method</option>
                     <option ng-repeat="method in recipeDetailsCtrl.cookingMethodList" value="{{method.name}}">{{method.name}}</option>
                 </select>
             </div>
             <div class="form-group">
-                <button class="btn btn-default" type="submit">Add</button>
+                <button class="btn btn-success" type="submit">Add</button>
             </div>
         </form>
     </div>
